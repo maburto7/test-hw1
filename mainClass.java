@@ -12,8 +12,8 @@ public class mainClass {
         int num3 = num1-1;
         int num4 = num2-1;
 
-        Triangle tr1 = new Triangle("FirstTriangle", num1, num1);
-        Triangle tr2 = new Triangle("SecondTriangle", num2, num2);
+        Triangle tr1 = new Triangle("FirstTriangle", num1, num2);
+        Triangle tr2 = new Triangle("SecondTriangle", num1-1, num2-1);
 
     
         Circle c1 = new Circle("FirstCircle", num1);
@@ -32,8 +32,8 @@ public class mainClass {
         //sq2.draw();
 
 
-        Rectangle rct1 = new Rectangle("FirstRectangle", num1, num1);
-        Rectangle rct2 = new Rectangle("SecondRectangle", num2, num2);
+        Rectangle rct1 = new Rectangle("FirstRectangle", num1, num2);
+        Rectangle rct2 = new Rectangle("SecondRectangle", num1-1, num2-1);
         //rct1.print();
         //rct1.draw();
         //rct2.print();
@@ -63,7 +63,7 @@ public class mainClass {
         
         pic.printAll();
         pic.drawAll();
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.00");
         System.out.println("Total: " + df.format(pic.totalArea()));
         
 
@@ -164,7 +164,7 @@ class Rectangle extends Square{
         System.out.println(" **************");
     }
 
-    public void print(){super.print(Integer.toString(num1) + ", " + Integer.toString(num1));}
+    public void print(){super.print(Integer.toString(num1) + ", " + Integer.toString(num2));}
     
    
 
