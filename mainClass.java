@@ -11,6 +11,10 @@ public class mainClass {
 
         int num3 = num1-1;
         int num4 = num2-1;
+
+        Triangle tr1 = new Triangle("FirstTriangle", num1, num1);
+        Triangle tr2 = new Triangle("SecondTriangle", num2, num2);
+
     
         Circle c1 = new Circle("FirstCircle", num1);
         Circle c2 = new Circle("SecondCircle", num3);
@@ -18,7 +22,7 @@ public class mainClass {
         //c1.draw();
         //c2.print();
         //c2.draw();
-        
+    
  
         Square sq1 = new Square("FirstSquare", num1);
         Square sq2 = new Square("SecondSquare", num3);
@@ -26,19 +30,16 @@ public class mainClass {
         //sq1.draw();
         //sq2.print();
         //sq2.draw();
-       
 
-        Rectangle rct1 = new Rectangle("FirstRectangle", num1, num2);
-        Rectangle rct2 = new Rectangle("SecondRectangle", num3, num4);
+
+        Rectangle rct1 = new Rectangle("FirstRectangle", num1, num1);
+        Rectangle rct2 = new Rectangle("SecondRectangle", num2, num2);
         //rct1.print();
         //rct1.draw();
         //rct2.print();
         //rct2.draw();
         
         
-
-        Triangle tr1 = new Triangle("FirstTriangle", num1, num2);
-        Triangle tr2 = new Triangle("SecondTriangle", num3, num4);
         //tr1.print();
         //tr1.draw();
         //tr2.print();
@@ -48,15 +49,21 @@ public class mainClass {
         Picture pic = new Picture();
         pic.add(tr1);
         pic.add(tr2);
+     
         pic.add(c1);
         pic.add(c2);
+
         pic.add(sq1);
         pic.add(sq2);
+
+        
         pic.add(rct1);
         pic.add(rct2);
+
+        
         pic.printAll();
         pic.drawAll();
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#.##");
         System.out.println("Total: " + df.format(pic.totalArea()));
         
 
@@ -67,7 +74,7 @@ public class mainClass {
 abstract class Shape {
     String name;
 
-    DecimalFormat df = new DecimalFormat("#.00");
+    DecimalFormat df = new DecimalFormat("#.##");
 
     public Shape(String name){ this.name = name; }
 
@@ -157,7 +164,7 @@ class Rectangle extends Square{
         System.out.println(" **************");
     }
 
-    public void print(){super.print(Integer.toString(num1, num2));}
+    public void print(){super.print(Integer.toString(num1) + ", " + Integer.toString(num1));}
     
    
 
@@ -171,7 +178,7 @@ class Triangle extends Shape{
         this.num2 = num2;
     }
 
-    public double area(){return (num1 * num2) / 2;}
+    public double area(){return (double) (num1 * num2) / 2;}
 
     public void draw(){
         System.out.println("  Triangle");
@@ -184,7 +191,9 @@ class Triangle extends Shape{
 
     }
 
-    public void print(){super.print(Integer.toString(num1, num2));}
+    public void print(){
+        super.print(Integer.toString(num1) + ", " + Integer.toString(num2));
+    }
 
 }
 
