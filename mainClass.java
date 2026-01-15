@@ -4,12 +4,9 @@ public class mainClass {
     public static void main(String[] args) {
 
         if(args.length != 2 ){System.exit(1);}
-
+        
         int num1 = Integer.parseInt(args[0]);
         int num2 = Integer.parseInt(args[1]);
-        
-        if(num1<0){System.exit(1);}
-        if(num2<0){System.exit(1);}
 
         int num3 = num1-1;
         int num4 = num2-1;
@@ -20,12 +17,16 @@ public class mainClass {
     
         Circle c1 = new Circle("FirstCircle", num1);
         Circle c2 = new Circle("SecondCircle", num3);
-
+    
+ 
         Square sq1 = new Square("FirstSquare", num1);
         Square sq2 = new Square("SecondSquare", num3);
 
+
+
         Rectangle rct1 = new Rectangle("FirstRectangle", num1, num2);
         Rectangle rct2 = new Rectangle("SecondRectangle", num1-1, num2-1);
+
         
         Picture pic = new Picture();
         pic.add(tr1);
@@ -47,22 +48,27 @@ public class mainClass {
         DecimalFormat df = new DecimalFormat("#.00");
         System.out.println("Total: " + df.format(pic.totalArea()));
         
+
+
     }
 }
 
 abstract class Shape {
     String name;
+
     DecimalFormat df = new DecimalFormat("#.##");
-    
+
     public Shape(String name){ this.name = name; }
 
     public abstract void print();
     public void print(String msg) {
         System.out.println(name+ "(" + msg + ") : " + df.format(area()));}
 
+
     public void draw(){}
-    
+
     public double area(){return 0.0;}
+
 }
 
 class Circle extends Shape{
@@ -85,9 +91,13 @@ class Circle extends Shape{
         System.out.println("*         *  ");
         System.out.println(" *       *  ");
         System.out.println("  ******* ");
+
     }
 
-    public void print(){  super.print(Integer.toString(num1));}
+    public void print(){
+        super.print(Integer.toString(num1));
+    }
+
 }
 
 class Square extends Shape{
@@ -110,6 +120,7 @@ class Square extends Shape{
     }
 
     public void print(){ super.print(Integer.toString(num1));}
+
 }
 
 class Rectangle extends Square{
@@ -132,6 +143,9 @@ class Rectangle extends Square{
     }
 
     public void print(){super.print(Integer.toString(num1) + ", " + Integer.toString(num2));}
+    
+   
+
 }
 
 class Triangle extends Shape{
@@ -155,7 +169,10 @@ class Triangle extends Shape{
 
     }
 
-    public void print(){ super.print(Integer.toString(num1) + ", " + Integer.toString(num2));}
+    public void print(){
+        super.print(Integer.toString(num1) + ", " + Integer.toString(num2));
+    }
+
 }
 
 class ListNode {
@@ -168,6 +185,7 @@ class ListNode {
     }
 }
 
+
 class Picture {
     ListNode head;
 
@@ -175,11 +193,13 @@ class Picture {
 
     public void add(Shape s){
         ListNode newObj = new ListNode(s, null);
-        ListNode obj;
-       
-        for(obj = head; obj.next != null; obj=obj.next){}
-        obj.next = newObj;
-    }
+        if(isEmpty()) this.head = newObj;
+
+        else{
+            ListNode obj;
+            for(obj = head; obj.next != null; obj=obj.next){}
+            obj.next = newObj;}
+        } 
         
 
     public int length(){
@@ -194,7 +214,10 @@ class Picture {
     public boolean isEmpty(){ return this.head==null;}
 
     public void printAll(){
-        for(ListNode curr = head; curr!=null; curr = curr.next ){curr.info.print();}
+        for(ListNode curr = head; curr!=null; curr = curr.next ){;
+            curr.info.print();
+        }
+
     }
 
     public void drawAll(){
