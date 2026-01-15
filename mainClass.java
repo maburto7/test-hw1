@@ -7,22 +7,17 @@ public class mainClass {
         
         int num1 = Integer.parseInt(args[0]);
         int num2 = Integer.parseInt(args[1]);
-
         int num3 = num1-1;
         int num4 = num2-1;
 
         Triangle tr1 = new Triangle("FirstTriangle", num1, num2);
         Triangle tr2 = new Triangle("SecondTriangle", num1-1, num2-1);
-
-    
+        
         Circle c1 = new Circle("FirstCircle", num1);
         Circle c2 = new Circle("SecondCircle", num3);
-    
- 
+       
         Square sq1 = new Square("FirstSquare", num1);
         Square sq2 = new Square("SecondSquare", num3);
-
-
 
         Rectangle rct1 = new Rectangle("FirstRectangle", num1, num2);
         Rectangle rct2 = new Rectangle("SecondRectangle", num1-1, num2-1);
@@ -31,25 +26,20 @@ public class mainClass {
         Picture pic = new Picture();
         pic.add(tr1);
         pic.add(tr2);
-     
+    
         pic.add(c1);
         pic.add(c2);
 
         pic.add(sq1);
         pic.add(sq2);
 
-        
         pic.add(rct1);
         pic.add(rct2);
 
-        
         pic.printAll();
         pic.drawAll();
         DecimalFormat df = new DecimalFormat("#.00");
         System.out.println("Total: " + df.format(pic.totalArea()));
-        
-
-
     }
 }
 
@@ -194,7 +184,6 @@ class Picture {
     public void add(Shape s){
         ListNode newObj = new ListNode(s, null);
         if(isEmpty()) this.head = newObj;
-
         else{
             ListNode obj;
             for(obj = head; obj.next != null; obj=obj.next){}
@@ -204,19 +193,14 @@ class Picture {
 
     public int length(){
         int i = 0;
-        for(ListNode obj = head; obj != null; obj=obj.next){
-            i+= 1;}
-            System.out.println(i);
-            return i;
+        for(ListNode obj = head; obj != null; obj=obj.next){i+= 1;}
+        return i;
         }
     
 
     public boolean isEmpty(){ return this.head==null;}
 
-    public void printAll(){
-        for(ListNode curr = head; curr!=null; curr = curr.next ){;
-            curr.info.print();
-        }
+    public void printAll(){ for(ListNode curr = head; curr!=null; curr = curr.next){  curr.info.print();}
 
     }
 
